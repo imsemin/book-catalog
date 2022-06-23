@@ -3,6 +3,9 @@
 
 Install the dependencies and devDependencies.
 
+install python 3.7 +
+
+next step:
 ```sh
 python3 -m venv venv
 source venv/bin/activate
@@ -14,3 +17,4 @@ Start dev server
 ```sh
 python3 manage.py runserver
 ```
+
