@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+
+<body>
+  <div class="water">
+    <h1>I AM SEMIN</h1>
+    <div class="fish">
+      <div class="face">
+        <div class="left-fin">
+        </div>
+        <div class="mouth">
+        </div>
+        <div class="nose">
+        </div>
+        <div class="right-fin">
+        </div>
+      </div>
+    </div>
+    <h2>Content coming soon...</h2>
+    <div class="login-box">
+      <h2>Contact me</h2>
+      <form action="/" method="POST">
+        {{ form.csrf_token }}
+        <div class="user-box">
+          {{form.name }}
+          <label>Name</label>
+        </div>
+        <div class="user-box">
+          {{ form.email }}
+          <label>Email</label>
+        </div>
+        <input id="send" type="submit" value="Submit">
+      </form>
+    </div>
+    <br>
+  </div>
+</body>
+
+</html>

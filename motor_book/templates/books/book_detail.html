@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <nav class="navbar"></nav>
+            <div class="logo">Motor</div>
+            <ul class="menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#order">ORDER</a></li>
+                <li><a href="#payment">PAYMENT & SHIPPING</a></li>
+                <li><a href="#pricelist">PRICELIST</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            </nav>
+        </header>
+        <div class="top-pic"></div>
+        <div class="main-content">
+            <section id="mainleft">
+                <div class="book-container">
+                    <div class="book-img"><img src="{{book.image.url}}" alt=""></div>
+                    <div class="book-info">
+                        <div class="small-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+                            asperiores laborum quaerat magnam amet dignissimos at reprehenderit. Eius temporibus
+                            distinctio enim, ad perspiciatis, nesciunt, consequatur facere est facilis sunt quo modi
+                            fuga suscipit voluptatum dolorum perferendis explicabo ipsam necessitatibus in. Quas
+                            perspiciatis asperiores magnam repellendus. Repudiandae dolore consequatur voluptatibus
+                            inventore?</div>
+                        <button class="order-btn">order</button>
+                    </div>
+                </div>
+                <div class="book-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero esse
+                    voluptate quia quis ex eaque quidem adipisci fugiat dolores, deserunt laudantium possimus iusto!
+                    Minima distinctio in eius recusandae fugit iure rerum numquam odio pariatur quidem, quisquam
+                    provident nemo rem possimus eaque harum praesentium quaerat non nulla magnam. Aspernatur, dolorem
+                    totam.</div>
+            </section>
+            <section id="mainright">
+                <ul class="cars">
+                    <li><a href="#man">MAN</a></li>
+                    <li><a href="#iveco">IVECO</a></li>
+                </ul>
+                <hr>
+                <ul class="categories">
+                    <li><a href="#engine">engine</a></li>
+                    <li><a href="#transmission">transmission</a></li>
+                </ul>
+            </section>
+        </div>
+        <!--<script src="app.js"></script>-->
+</body>
+{% endblock %}

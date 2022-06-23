@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <nav class="navbar"></nav>
+            <div class="logo">Motor</div>
+            <ul class="menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#order">ORDER</a></li>
+                <li><a href="#payment">PAYMENT & SHIPPING</a></li>
+                <li><a href="#pricelist">PRICELIST</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            </nav>
+        </header>
+        <div class="top-pic"></div>
+        <div class="main-content">
+            <section id="mainleft">
+                <div class="booklist">
+                    <table>
+                        <tbody>
+                            {% for book in books %}
+                            <tr>
+                                <td>
+                                    <a href="{{ book.get_absolute_url }}">
+                                        <h1>{{ book.title }}</h1>
+                                    </a>
+                                    <img class="card-img my-2" src="{{ book.image.url }}">
+                                    <h3>Цена: {{ book.price }} руб. 00 коп. </h3>
+                                    <h5>Описание: {{ book.description }}</h5>
+                                    {% for category in book.category.all %}
+                                    <h5> Категория: {{ category }}</h5>
+                                    {% endfor %}
+                                    {% for car in book.car_models.all %}
+                                    <h5> Марка авто: {{ car }}</h5>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="mainright">
+                <ul class="cars">
+                    <li><a href="#man">MAN</a></li>
+                    <li><a href="#iveco">IVECO</a></li>
+                </ul>
+                <hr>
+                <ul class="categories">
+                    <li><a href="#engine">engine</a></li>
+                    <li><a href="#transmission">transmission</a></li>
+                </ul>
+            </section>
+        </div>
+        <!--<script src="app.js"></script>-->
+</body>
+{% endblock %}
