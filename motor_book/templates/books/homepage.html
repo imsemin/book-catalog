@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ title }}
+MAIN PAGE
 {% endblock %}
 
 {% block content %}
@@ -50,13 +50,17 @@
             </section>
             <section id="mainright">
                 <ul class="cars">
-                    <li><a href="#man">MAN</a></li>
-                    <li><a href="#iveco">IVECO</a></li>
+                    {% for car in cars %}
+                    <a href="{{ car.get_absolute_url }}">
+                        <h1> {{ car }} </h1>
+                    </a>
+                    {% endfor %}
                 </ul>
                 <hr>
                 <ul class="categories">
-                    <li><a href="#engine">engine</a></li>
-                    <li><a href="#transmission">transmission</a></li>
+                    {% for category in categories %}
+                    {{ category }}
+                    {% endfor %}
                 </ul>
             </section>
         </div>

@@ -17,4 +17,7 @@ Start dev server
 ```sh
 python3 manage.py runserver
 ```
+### Authors
 
+backend - Evgeniy Semin
+frontend - Nikolay Saprikin

@@ -16,6 +16,9 @@ class CarModel(models.Model):
     def __str__(self):
         return self.car_model
 
+    def get_absolute_url(self):
+        return reverse("books:car_models", kwargs={"slug": self.slug})
+
 
 class Category(models.Model):
     title = models.CharField("Категория", max_length=200)
