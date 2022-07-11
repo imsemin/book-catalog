@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Книги об автомобиле: {{ title }}
+{% endblock %}
+
+{% block content %}
+
+<body>
+    {% for car in cars %}
+    {{ car }}
+    {% endfor %}
+</body>
+
+{% endblock %}

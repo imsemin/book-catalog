@@ -24,11 +24,19 @@ def index(request):
     return render(request, template_name, context)
 
 
-def car_models(request, slug):
-    template_name = "books/car_models.html"
+def car_list(request, slug):
+    template_name = "books/car_list.html"
     car = get_object_or_404(CarModel, slug=slug)
     car_list = Book.objects.filter(car_models=car)
-    context = {"cars": car_list}
+    context = {"cars": car_list, "title": car}
+    return render(request, template_name, context)
+
+
+def category_list(request, slug):
+    template_name = "books/category_list.html"
+    category = get_object_or_404(Category, slug=slug)
+    category_list = Book.objects.filter(category=category)
+    context = {"categories": category_list, "title": category}
     return render(request, template_name, context)
 
 

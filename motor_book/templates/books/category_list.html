@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ car.title }}
+Книги категории: {{ title }}
 {% endblock %}
 
 {% block content %}
 
 <body>
-    {% for car in cars %}
-    {{ car }}
+    {% for category in categories %}
+    {{ category }}
     {% endfor %}
 </body>
+
 {% endblock %}

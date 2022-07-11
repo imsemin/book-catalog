@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import CarModel, Category, Comment, Book
+from .models import CarModel, Category, Comment, Book, Order
 
 
 @admin.register(CarModel)
@@ -24,7 +24,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Book)
-class CategoryAdmin(admin.ModelAdmin):
+class BookAdmin(admin.ModelAdmin):
     list_display = (
         "pk",
         "title",
@@ -45,3 +45,8 @@ class CommentAdmin(admin.ModelAdmin):
         "author",
         "text",
     )
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ("pk", "status", "order_date", "book", "buyer")
