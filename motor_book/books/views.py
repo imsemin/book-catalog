@@ -45,9 +45,12 @@ class CategoryListView(ListView):
     context_object_name = "categories"
 
     def get_queryset(self):
-        return get_list_or_404(
-            Category.objects.filter(slug=self.kwargs["slug"])
-        )
+        # return get_list_or_404(
+        #     Book.objects.filter(category=self.kwargs["category"])
+        # )
+        category = Category.objects.get(slug=self.kwargs["slug"])
+        print(category.id)
+        return get_list_or_404(Book.objects.filter(category=category))
 
 
 class BookDetailView(DetailView):

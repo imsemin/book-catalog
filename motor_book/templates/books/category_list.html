@@ -1,15 +1,48 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Книги категории: {{ categories }}
+{{ categories.slug }}
 {% endblock %}
 
 {% block content %}
 
 <body>
-    {% for category in categories %}
-    {{ category }}
-    {% endfor %}
+    <div class="page-wrapper">
+        <header>
+            <nav class="navbar"></nav>
+            <div class="logo">Motor</div>
+            <ul class="menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#order">ORDER</a></li>
+                <li><a href="#payment">PAYMENT & SHIPPING</a></li>
+                <li><a href="#pricelist">PRICELIST</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            </nav>
+        </header>
+        <div class="top-pic"></div>
+        <div class="main-content">
+            <section id="mainleft">
+                <div class="booklist">
+                    <table>
+                        <tbody>
+                            {% for book in categories %}
+                            <tr>
+                                <td>
+                                    <a href="{{ book.get_absolute_url }}">
+                                        <h1>{{ book.title }}</h1>
+                                    </a>
+                                    <img class="card-img my-2" src="{{ book.image.url }}">
+                                    <h3>Цена: {{ book.price }} руб. 00 коп. </h3>
+                                    <h5>Описание: {{ book.description }}</h5>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <!--<script src="app.js"></script>-->
 </body>
-
 {% endblock %}
