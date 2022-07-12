@@ -50,6 +50,7 @@ class Book(models.Model):
     publisher = models.CharField("Издалельство", max_length=200, blank=True)
     image = models.ImageField("Картинка", upload_to="books/", blank=True)
     pub_date = models.DateTimeField("Дата создания", auto_now_add=True)
+    republish = models.BooleanField("Переиздание", default=True)
 
     class Meta:
         ordering = ["-pub_date"]
