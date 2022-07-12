@@ -6,46 +6,29 @@ MAIN PAGE
 
 {% block content %}
 
-<body>
-    <div class="page-wrapper">
-        <header>
-            <nav class="navbar"></nav>
-            <div class="logo">Motor</div>
-            <ul class="menu">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#order">ORDER</a></li>
-                <li><a href="#payment">PAYMENT & SHIPPING</a></li>
-                <li><a href="#pricelist">PRICELIST</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-            </nav>
-        </header>
+{% load static %}
+
         <div class="top-pic"></div>
         <div class="main-content">
             <section id="mainleft">
                 <div class="booklist">
-                    <table>
-                        <tbody>
                             {% for book in books %}
-                            <tr>
-                                <td>
-                                    <a href="{{ book.get_absolute_url }}">
+                            <div class="book-container-mini">
+                                <img class="card-img my-2" src="{{ book.image.url }}">
+                                <div class="book-info"><a href="{{ book.get_absolute_url }}">
                                         <h1>{{ book.title }}</h1>
                                     </a>
-                                    <img class="card-img my-2" src="{{ book.image.url }}">
-                                    <h3>Цена: {{ book.price }} руб. 00 коп. </h3>
-                                    <h5>Описание: {{ book.description }}</h5>
+                                    <p class="book-desc-mini">{{ book.description }}</p>
                                     {% for category in book.category.all %}
-                                    <h5> Категория: {{ category }}</h5>
+                                    <!-- <h5> Категория: {{ category }}</h5> -->
                                     {% endfor %}
                                     {% for car in book.car_models.all %}
-                                    <h5> Марка авто: {{ car }}</h5>
+                                    <!-- <h5> Марка авто: {{ car }}</h5> -->
                                     {% endfor %}
-                                </td>
-                            </tr>
+                                </div>
+                                    <div class="book-price"><h3>{{ book.price }} руб.</h3> </div>
+                                </div>
                             {% endfor %}
-                        </tbody>
-                    </table>
                 </div>
             </section>
             <section id="mainright">
@@ -66,6 +49,6 @@ MAIN PAGE
                 </ul>
             </section>
         </div>
-        <!--<script src="app.js"></script>-->
+        <script type="text/javascript" src="{% static 'css/app.js' %}"></script>
 </body>
 {% endblock %}
