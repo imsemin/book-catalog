@@ -10,6 +10,9 @@ class CarModelAdmin(admin.ModelAdmin):
         "car_model",
         "slug",
     )
+    list_display_links = ("car_model",)
+    list_filter = ("car_model",)
+    search_fields = ("car_model",)
     prepopulated_fields = {"slug": ("car_model",)}
 
 
@@ -20,6 +23,9 @@ class CategoryAdmin(admin.ModelAdmin):
         "title",
         "slug",
     )
+    list_display_links = ("title",)
+    list_filter = ("title",)
+    search_fields = ("title",)
     prepopulated_fields = {"slug": ("title",)}
 
 
@@ -30,10 +36,14 @@ class BookAdmin(admin.ModelAdmin):
         "title",
         "price",
         "available_in_stoke",
-        "image",
         "cover",
         "publisher",
+        "republish",
     )
+    list_display_links = ("title",)
+    list_editable = ("price", "available_in_stoke", "republish")
+    list_filter = ("title",)
+    search_fields = ("title",)
     prepopulated_fields = {"slug": ("title",)}
 
 
