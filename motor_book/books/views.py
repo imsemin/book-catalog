@@ -1,5 +1,5 @@
-from django.views.generic import DetailView, TemplateView, ListView
-from django.shortcuts import get_object_or_404, get_list_or_404, render
+from django.views.generic import DetailView, TemplateView
+from django.shortcuts import get_object_or_404, render
 
 from .models import Book, Category, CarModel
 
@@ -32,25 +32,12 @@ def car_list(request, slug):
     return render(request, template_name, context)
 
 
-# def category_list(request, slug):
-#     template_name = "books/category_list.html"
-#     category = get_object_or_404(Category, slug=slug)
-#     category_list = Book.objects.filter(category=category)
-#     context = {"categories": category_list, "title": category}
-#     return render(request, template_name, context)
-
-
-class CategoryListView(ListView):
+def category_list(request, slug):
     template_name = "books/category_list.html"
-    context_object_name = "categories"
-
-    def get_queryset(self):
-        # return get_list_or_404(
-        #     Book.objects.filter(category=self.kwargs["category"])
-        # )
-        category = Category.objects.get(slug=self.kwargs["slug"])
-        print(category.id)
-        return get_list_or_404(Book.objects.filter(category=category))
+    category = get_object_or_404(Category, slug=slug)
+    category_list = Book.objects.filter(category=category)
+    context = {"categories": category_list, "title": category}
+    return render(request, template_name, context)
 
 
 class BookDetailView(DetailView):
