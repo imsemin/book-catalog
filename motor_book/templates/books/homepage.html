@@ -1,54 +1,59 @@
 {% extends 'base.html' %}
+{% load book_tag %}
 
 {% block title %}
-MAIN PAGE
+{{ title }}
 {% endblock %}
 
 {% block content %}
 
 {% load static %}
 
-        <div class="top-pic"></div>
-        <div class="main-content">
-            <section id="mainleft">
-                <div class="booklist">
-                            {% for book in books %}
-                            <div class="book-container-mini">
-                                <img class="card-img my-2" src="{{ book.image.url }}">
-                                <div class="book-info"><a href="{{ book.get_absolute_url }}">
-                                        <h1>{{ book.title }}</h1>
-                                    </a>
-                                    <p class="book-desc-mini">{{ book.description }}</p>
-                                    {% for category in book.category.all %}
-                                    <!-- <h5> Категория: {{ category }}</h5> -->
-                                    {% endfor %}
-                                    {% for car in book.car_models.all %}
-                                    <!-- <h5> Марка авто: {{ car }}</h5> -->
-                                    {% endfor %}
-                                </div>
-                                    <div class="book-price"><h3>{{ book.price }} руб.</h3> </div>
-                                </div>
-                            {% endfor %}
+<div class="top-pic"></div>
+<div class="main-content">
+    <section id="mainleft">
+        <div class="booklist">
+            {% for book in books %}
+            <div class="book-container-mini">
+                <img class="card-img my-2" src="{{ book.image.url }}">
+                <div class="book-info"><a href="{{ book.get_absolute_url }}">
+                        <h1>{{ book.title }}</h1>
+                    </a>
+                    <p class="book-desc-mini">{{ book.description }}</p>
+                    {% for category in book.category.all %}
+                    <!-- <h5> Категория: {{ category }}</h5> -->
+                    {% endfor %}
+                    {% for car in book.car_models.all %}
+                    <!-- <h5> Марка авто: {{ car }}</h5> -->
+                    {% endfor %}
                 </div>
-            </section>
-            <section id="mainright">
-                <ul class="cars">
-                    {% for car in cars %}
-                    <a href="{{ car.get_absolute_url }}">
-                        <h1> {{ car }} </h1>
-                    </a>
-                    {% endfor %}
-                </ul>
-                <hr>
-                <ul class="categories">
-                    {% for category in categories %}
-                    <a href="{{ category.get_absolute_url }}">
-                        <h1> {{ category }} </h1>
-                    </a>
-                    {% endfor %}
-                </ul>
-            </section>
+                <div class="book-price">
+                    <h3>{{ book.price }} руб.</h3>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        <script type="text/javascript" src="{% static 'css/app.js' %}"></script>
+    </section>
+    <section id="mainright">
+        <ul class="cars">
+            {% get_car_model as cars %}
+            {% for car in cars %}
+            <a href="{{ car.get_absolute_url }}">
+                <h1> {{ car }} </h1>
+            </a>
+            {% endfor %}
+        </ul>
+        <hr>
+        <ul class="categories">
+            {% get_categories as categories %}
+            {% for category in categories %}
+            <a href="{{ category.get_absolute_url }}">
+                <h1> {{ category }} </h1>
+            </a>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+<script type="text/javascript" src="{% static 'css/app.js' %}"></script>
 </body>
 {% endblock %}
