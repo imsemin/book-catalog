@@ -6,8 +6,7 @@ app_name = "books"
 
 urlpatterns = [
     path("", views.MainView.as_view()),
-    path("homepage.html", views.BookListView.as_view()),
-    # path("homepage.html", views.index),
+    path("homepage.html", views.BookListView.as_view(), name="home"),
     path("car_list/<slug:slug>", views.car_list, name="car_list"),
     path(
         "category_list/<slug:slug>", views.category_list, name="category_list"
