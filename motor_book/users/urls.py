@@ -68,4 +68,7 @@ urlpatterns = [
         ),
         name="password_reset_complete",
     ),
+    path(
+        "profile/<int:pk>/", views.ProfileDetailView.as_view(), name="profile"
+    ),
 ]
