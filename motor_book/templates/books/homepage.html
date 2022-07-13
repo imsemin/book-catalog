@@ -21,14 +21,14 @@
                     </a>
                     <p class="book-desc-mini">{{ book.description }}</p>
                     {% for category in book.category.all %}
-                    <!-- <h5> Категория: {{ category }}</h5> -->
+                    <h5> Категория: {{ category }}</h5>
                     {% endfor %}
                     {% for car in book.car_models.all %}
-                    <!-- <h5> Марка авто: {{ car }}</h5> -->
-                    {% endfor %}
+                    <h5> Марка авто: {{ car }}
+                        {% endfor %}
                 </div>
                 <div class="book-price">
-                    <h3>{{ book.price }} руб.</h3>
+                    <h3> Цена: {{ book.price }} руб.</h3>
                 </div>
             </div>
             {% endfor %}
