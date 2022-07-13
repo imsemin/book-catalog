@@ -14,6 +14,7 @@ body {
     margin: 0;
     height: 100%;
     min-height: 100%;
+    background: #e0e5ec;
 }
 
 ul {
@@ -265,7 +266,7 @@ nav{
 }
 
 .book-container {
-    display: flex;
+    display: grid;
 }
 
 .book-info {
@@ -273,9 +274,110 @@ nav{
 }
 
 .book-img img {
-    width: 25rem;
+    width: 20rem;
 }
 
 .book-price {
   margin-right: 1em;
 }
+
+.order-btn {
+  color: #F3C5BB;
+  background-image: linear-gradient(315deg, #d85b35 0%, #e97762 74%);
+    border: none;
+    z-index: 1;
+  padding: 1em 2em;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  font-family: 'Jost', sans-serif;
+}
+
+.order-btn:hover {
+    color: #fff;
+    cursor: pointer;
+    background-image: linear-gradient(315deg, #e97762 0%, #d85b35 74%);
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+      7px 7px 20px 0px rgba(0,0,0,.1),
+      4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+.stock{
+  padding: .5em;
+  color: #8fc464;
+}
+
+@media screen and (min-width: 800px) {
+  .book-container {
+    display: flex;
+    padding: 1em;
+  }
+  .book-info{
+    padding-left: 2em;
+  }
+  .book-description{
+    padding: 1em;
+  }
+}
+
+/* order form */
+
+.order-overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: var(--transition);
+  display: grid;
+  place-items: center;
+}
+
+.order-form {
+  padding: 1em;
+  background-color: #F3C5BB;
+  border-radius: 5px;
+  width: 25vw;
+  height: 45vh;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.order-form input{
+  width: 60%;
+  border: none;
+  border-radius: 5px;
+  padding: .5em;
+  margin: .5em;
+}
+
+.order-form textarea{
+  width: 60%;
+  height: 10vh;
+  border: none;
+  border-radius: 5px;
+  padding: .5em;
+  margin: .5em;
+}
+
+.open-modal {
+  visibility: visible;
+  z-index: 10;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: rgb(110, 19, 19);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* order form end */

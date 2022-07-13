@@ -6,6 +6,8 @@
 
 {% block content %}
 
+{% load static %}
+
         <div class="top-pic"></div>
         <div class="main-content">
             <section id="mainleft">
@@ -17,11 +19,26 @@
                             <h3> Количество страниц: {{ book.pages }} </h3>
                             <h3> Цена: {{ book.price }} руб. 00 коп. </h3>
                         </div>
-                        <button class="order-btn">order</button>
+                        <button class="order-btn modal-btn">ЗАКАЗАТЬ</button>
+                        <div class="stock">в наличии</div>
                     </div>
                 </div>
                 <div class="book-description">{{ book.description }}</div>
             </section>
+            <div class="order-overlay">
+                <div class="order-form">
+                    <h2>Оформить заказ</h2>
+                        <input placeholder="ФИО" type="text" tabindex="1" required autofocus>
+                        <input placeholder="Телефон" type="tel" tabindex="2" required>
+                        <input placeholder="Email" type="email" tabindex="3" required>
+                        <input placeholder="Адрес" type="text" tabindex="4" required>
+                        <textarea placeholder="Комментарий" tabindex="5" required></textarea>
+                    <button class="order-btn">ЗАКАЗАТЬ</button>
+                    <button class="close-btn">
+                        x
+                    </button>
+                </div>
+            </div>
             <section id="mainright">
                 <ul class="cars">
                     <li><a href="#man">MAN</a></li>
@@ -34,6 +51,6 @@
                 </ul>
             </section>
         </div>
-        <!--<script src="app.js"></script>-->
+        <script type="text/javascript" src="{% static 'css/app.js' %}"></script>
 </body>
 {% endblock %}
