@@ -79,4 +79,5 @@ class OrderAdmin(admin.ModelAdmin):
         "order_date",
         "book",
     )
+    list_editable = ("status",)
     readonly_fields = ("buyer_name", "buyer_surname", "email", "phone_number")
