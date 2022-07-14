@@ -19,8 +19,10 @@
                     <h3> Количество страниц: {{ book.pages }} </h3>
                     <h3> Цена: {{ book.price }} руб. 00 коп. </h3>
                 </div>
+                {% if book.available_in_stoke > 0 %}
                 <button class="order-btn modal-btn">ЗАКАЗАТЬ</button>
                 <div class="stock">в наличии</div>
+                {% endif %}
             </div>
         </div>
         <div class="book-description">{{ book.description|safe }}</div>

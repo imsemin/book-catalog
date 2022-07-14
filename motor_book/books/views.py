@@ -32,14 +32,6 @@ def category_list(request, slug):
     return render(request, template_name, context)
 
 
-# class BookDetailView(DetailView):
-#     model = Book
-
-#     def get_order(request):
-#         if request.method == "POST":
-#             form = OrderForm
-
-
 def book_detail(request, slug):
     template_name = "books/book_detail.html"
     book = get_object_or_404(Book, slug=slug)
