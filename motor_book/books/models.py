@@ -1,9 +1,8 @@
+from ckeditor.fields import RichTextField
+from django.core.validators import RegexValidator
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
-
-from ckeditor.fields import RichTextField
-
 
 User = get_user_model()
 
@@ -41,8 +40,7 @@ class Category(models.Model):
 class Book(models.Model):
     title = models.CharField("Название", max_length=200)
     slug = models.SlugField(unique=True)
-    # description = models.TextField("Описание", max_length=2000)
-    description = RichTextField("Описание", max_length=2000)
+    description = RichTextField("Описание", max_length=5000)
     pages = models.PositiveSmallIntegerField("Количество страниц")
     price = models.PositiveIntegerField("Стоимость", help_text="руб.")
     available_in_stoke = models.PositiveSmallIntegerField(
@@ -108,7 +106,7 @@ class Order(models.Model):
     ]
 
     status = models.CharField(
-        "Статус заказа", choices=STATUS, default="in_progress", max_length=20
+        "Статус заказа", choices=STATUS, default=IN_PROGRESS, max_length=20
     )
     order_date = models.DateTimeField("Дата создания", auto_now_add=True)
     comment = models.TextField(
@@ -116,12 +114,19 @@ class Order(models.Model):
         help_text="Комментарий к заказу",
         blank=True,
     )
-    buyer = models.ForeignKey(
-        User,
-        on_delete=models.DO_NOTHING,
-        related_name="orders",
-        verbose_name="Покупатель",
+    buyer_name = models.CharField("Имя", max_length=50)
+    buyer_surname = models.CharField("Фамилия", max_length=50)
+    email = models.EmailField("E-mail")
+    phone_number = models.CharField(
+        "Телефон",
+        validators=[RegexValidator(r"^\d{1}-\d{3}-\d{3}-\d{2}-\d{2}$")],
+        max_length=20,
     )
     book = models.ForeignKey(
         Book, blank=True, on_delete=models.DO_NOTHING, related_name="orders"
     )
+
+    class Meta:
+        ordering = ["-order_date"]
+        verbose_name = "Заказ"
+        verbose_name_plural = "Заказы"

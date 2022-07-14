@@ -2,6 +2,7 @@ from django.views.generic import DetailView, TemplateView, ListView
 from django.shortcuts import get_object_or_404, render
 
 from .models import Book, Category, CarModel
+from .forms import OrderForm
 
 
 class MainView(TemplateView):
@@ -31,5 +32,21 @@ def category_list(request, slug):
     return render(request, template_name, context)
 
 
-class BookDetailView(DetailView):
-    model = Book
+# class BookDetailView(DetailView):
+#     model = Book
+
+#     def get_order(request):
+#         if request.method == "POST":
+#             form = OrderForm
+
+
+def book_detail(request, slug):
+    template_name = "books/book_detail.html"
+    book = get_object_or_404(Book, slug=slug)
+    form = OrderForm(request.POST or None)
+    if form.is_valid():
+        order = form.save(commit=False)
+        order.book = book
+        order.save()
+    context = {"book": book, "form": form}
+    return render(request, template_name, context)
