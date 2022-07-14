@@ -73,4 +73,10 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("id", "status", "order_date", "book", "buyer")
+    list_display = (
+        "id",
+        "status",
+        "order_date",
+        "book",
+    )
+    readonly_fields = ("buyer_name", "buyer_surname", "email", "phone_number")
