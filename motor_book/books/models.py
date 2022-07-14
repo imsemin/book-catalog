@@ -2,6 +2,9 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 
+from ckeditor.fields import RichTextField
+
+
 User = get_user_model()
 
 
@@ -38,7 +41,8 @@ class Category(models.Model):
 class Book(models.Model):
     title = models.CharField("Название", max_length=200)
     slug = models.SlugField(unique=True)
-    description = models.TextField("Описание", max_length=2000)
+    # description = models.TextField("Описание", max_length=2000)
+    description = RichTextField("Описание", max_length=2000)
     pages = models.PositiveSmallIntegerField("Количество страниц")
     price = models.PositiveIntegerField("Стоимость", help_text="руб.")
     available_in_stoke = models.PositiveSmallIntegerField(

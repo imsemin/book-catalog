@@ -19,13 +19,14 @@
                 <div class="book-info"><a href="{{ book.get_absolute_url }}">
                         <h1>{{ book.title }}</h1>
                     </a>
-                    <p class="book-desc-mini">{{ book.description }}</p>
+                    <p class="book-desc-mini">{{ book.description|safe}}</p>
                     {% for category in book.category.all %}
                     <h5> Категория: {{ category }}</h5>
                     {% endfor %}
+                    <h5> Марка авто: </h5>
                     {% for car in book.car_models.all %}
-                    <h5> Марка авто: {{ car }}
-                        {% endfor %}
+                    <p> {{ car }}</p>
+                    {% endfor %}
                 </div>
                 <div class="book-price">
                     <h3> Цена: {{ book.price }} руб.</h3>
