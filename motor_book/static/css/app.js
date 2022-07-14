@@ -16,3 +16,8 @@ modalBtn.addEventListener('click', function() {
 closeBtn.addEventListener('click', function() {
     modalOverlay.classList.remove('open-modal')
 })
+
+var phoneMask = IMask(
+    document.getElementById('id_phone_number'), {
+        mask: '{7}-000-000-00-00'
+});
