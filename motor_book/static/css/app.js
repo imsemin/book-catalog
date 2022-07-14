@@ -21,3 +21,9 @@ var phoneMask = IMask(
     document.getElementById('id_phone_number'), {
         mask: '{7}-000-000-00-00'
 });
+
+document.getElementById('id_buyer_name').placeholder = 'Имя';
+document.getElementById('id_buyer_surname').placeholder = 'Фамилия';
+document.getElementById('id_phone_number').placeholder = 'Номер телефона';
+document.getElementById('id_email').placeholder = 'Email';
+document.getElementById('id_comment').placeholder = 'Комментарий';
