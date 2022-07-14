@@ -23,9 +23,10 @@
                     {% for category in book.category.all %}
                     <h5> Категория: {{ category }}</h5>
                     {% endfor %}
+                    <h5> Марка авто: </h5>
                     {% for car in book.car_models.all %}
-                    <h5> Марка авто: {{ car }}
-                        {% endfor %}
+                    <p> {{ car }}</p>
+                    {% endfor %}
                 </div>
                 <div class="book-price">
                     <h3> Цена: {{ book.price }} руб.</h3>
