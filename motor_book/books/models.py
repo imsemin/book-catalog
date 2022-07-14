@@ -125,6 +125,7 @@ class Order(models.Model):
     book = models.ForeignKey(
         Book, blank=True, on_delete=models.DO_NOTHING, related_name="orders"
     )
+    buyer_city = models.CharField("Город", max_length=100)
 
     class Meta:
         ordering = ["-order_date"]
