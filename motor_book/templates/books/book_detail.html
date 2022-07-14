@@ -32,11 +32,11 @@
             <form method="post" action="">
                 {% csrf_token %}
                 <h2>Оформить заказ</h2>
-                <p> Имя: {{ form.buyer_name }} </p>
-                <p> Фамилия: {{ form.buyer_surname }} </p>
-                <p> Телефон: {{ form.phone_number }} </p>
-                <p> Адрес электронной почты: {{ form.email }} </p>
-                <p> Комментарий к заказу: {{ form.comment }} </p>
+                {{ form.buyer_name }}
+                {{ form.buyer_surname }}
+                {{ form.phone_number }}
+                {{ form.email }}
+                {{ form.comment }}
                 <button type="submit" class="order-btn">ЗАКАЗАТЬ</button>
                 <button class="close-btn">
                     x
