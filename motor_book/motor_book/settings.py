@@ -134,3 +134,6 @@ CKEDITOR_CONFIGS = {
         "width": 800,
     },
 }
+
+### Paginator items on pages
+ITEMS_ON_PAGE = 10

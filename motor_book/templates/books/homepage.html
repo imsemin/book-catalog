@@ -13,7 +13,7 @@
 <div class="main-content">
     <section id="mainleft">
         <div class="booklist">
-            {% for book in books %}
+            {% for book in page_obj %}
             <div class="book-container-mini">
                 <img class="card-img my-2" src="{{ book.image.url }}">
                 <div class="book-info"><a href="{{ book.get_absolute_url }}">
@@ -34,6 +34,7 @@
             </div>
             {% endfor %}
         </div>
+        {% include 'books/includes/paginator.html' %}
     </section>
     <section id="mainright">
         <ul class="cars">

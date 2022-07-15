@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<!-- {% load static %} -->
+{% load static %}
 
 <div class="top-pic"></div>
 <div class="main-content">
@@ -34,6 +34,7 @@
                 <h2>Оформить заказ</h2>
                 {{ form.buyer_name }}
                 {{ form.buyer_surname }}
+                {{ form.buyer_city }}
                 {{ form.phone_number }}
                 {{ form.email }}
                 {{ form.comment }}

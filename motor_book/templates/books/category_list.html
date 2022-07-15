@@ -6,6 +6,8 @@
 
 {% block content %}
 
+{% load static %}
+
 <body>
     <div class="page-wrapper">
         <div class="top-pic"></div>
@@ -14,7 +16,7 @@
                 <div class="booklist">
                     <table>
                         <tbody>
-                            {% for book in categories %}
+                            {% for book in page_obj %}
                             <tr>
                                 <td>
                                     <a href="{{ book.get_absolute_url }}">
@@ -22,14 +24,16 @@
                                     </a>
                                     <img class="card-img my-2" src="{{ book.image.url }}">
                                     <h3>Цена: {{ book.price }} руб. 00 коп. </h3>
-                                    <h5>Описание: {{ book.description }}</h5>
+                                    <h5>Описание: {{ book.description|safe }}</h5>
                                 </td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
+                {% include 'books/includes/paginator.html' %}
             </section>
+
         </div>
         <script type="text/javascript" src="{% static 'css/app.js' %}"></script>
 </body>
